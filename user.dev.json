@@ -1,0 +1,23 @@
+{
+    "fileWatcherPlugin": {
+        "touchFile": "./public/index.php",
+        "ignored": "./public/index.php",
+        "watchFileGlobs": [
+            "./public/**/*.js",
+            "./public/**/*.css",
+            "./public/**/*.php"
+        ]
+    },
+    "wpThemeServer": {
+        "enable": true,
+        "host": "127.0.0.1",
+        "port": 8090,
+        "sslCert": null,
+        "sslKey": null,
+        "watchFile": "../index.php"
+    },
+    "injectWpThemeClient": {
+        "override": null,
+        "file": "./build/index.php"
+    }
+}
