@@ -1,10 +1,14 @@
-This project was bootstrapped with [Create React WPTheme](https://www.npmjs.com/package/create-react-wptheme). 
-
 Barebones is a starter theme for WordPress running ReactJS. It is designed to get you up to speed in writing JS single page applications and WordPress' REST api. A complete tutorial on how this theme is built can be found [here](http://michaelsoriano.com/wordpress-theme-react-part-1-setup/).  
+
+This repo contains the "react-src" portion of the theme only. When you clone, you have to take extra steps for it to work. Continue below:
 
 ## How to use
 
-In your WP themes directory, clone this repository. CD into the "barebones" and run 
+In your WP themes directory, create a directory named "my-theme" - or any name you like. CD into this directory, and do:
+
+`git clone https://thisrepo.git react-src`
+
+This will create a folder inside your my-theme directory called "react-src" with the necessary files. CD into "react-src" and do:
 
 ### `npm install`
 
