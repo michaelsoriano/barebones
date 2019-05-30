@@ -3,9 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@devloco\/react-scripts-wptheme": "3.0.1-wptheme-3.0.0",
+        "@devloco/react-scripts-wptheme": "3.0.1-wptheme-3.0.0",
         "react": "^16.8.6",
-        "react-dom": "^16.8.6"
+        "react-dom": "^16.8.6",
+        "react-router-dom": "^5.0.0"
     },
     "scripts": {
         "crabuild": "react-scripts build",
@@ -32,6 +33,6 @@
             "last 1 safari version"
         ]
     },
-    "homepage": "\/wordpress\/wp-content\/themes\/barebones",
-    "browserLaunchTo": "http:\/\/localhost\/wordpress"
+    "homepage": "/wp-content/themes/barebones",
+    "browserLaunchTo": "http://wordpress.local"
 }
