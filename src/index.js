@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
-import App from './App';
-import Users from './Users';
+import Home from './Home';
+import Notfound from './Notfound';
 import * as serviceWorker from './serviceWorker';
-
 
 const routes = (
     <Router>
       <Switch>
-          <Route path="/" component={App} /> 
-          <Route path="/users" component={Users} />         
+          <Route exact path="/" component={Home} /> 
+          <Route component={Notfound} />       
       </Switch>
     </Router>
   )
