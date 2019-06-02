@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import Head from '../partials/Head';
+import Foot from '../partials/Foot';
+
 class Post extends React.Component {
   
-  render() {
-    console.log(this.props);
-    return <div className="Post">this is the Post component
-      <h1>this is the slug: {this.props.match.params.slug}</h1>
-    </div>
+  render() {    
+    return (
+      <div className="Post">
+        <Head></Head>
+        this is the Post component
+        <h1>this is the slug: {this.props.match.params.slug}</h1>
+        <Foot></Foot>
+      </div>
+    )
+    
   }
 }
 export default Post

@@ -26,13 +26,9 @@
         work correctly both with client-side routing and a non-root public URL.
         Learn how to configure a non-root public URL by running `npm run wpbuild`.
     -->
-    <title>React WordPress Theme</title>
+    <title>Barebones WordPress Theme</title>
 </head>
-    <body>
-    <noscript>
-        You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
+    <body id="root">
     <!--
         This PHP file is a template.
         If you open it directly in the browser, you will see an empty page.
