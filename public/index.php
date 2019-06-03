@@ -28,7 +28,8 @@
     -->
     <title>Barebones WordPress Theme</title>
 </head>
-    <body id="root">
+    <body>
+        <div id="root"></div>
     <!--
         This PHP file is a template.
         If you open it directly in the browser, you will see an empty page.
