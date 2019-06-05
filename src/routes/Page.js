@@ -1,18 +1,20 @@
 import React from 'react';
 import Head from '../partials/Head';
+import TheLoop from '../partials/TheLoop';
 import Foot from '../partials/Foot';
+import {Provider} from '../context/Context'
 
-class Page extends React.Component {
+const Page = (props) => { 
   
-  render() {     
-    return (
-      <div className="Page">
-        <Head></Head>
-        this is the page component
-        <h1>this is the slug: {this.props.match.params.slug}</h1>
-        <Foot></Foot>
-      </div>
-    )
-  }
+  return (
+    <Provider slug={props.match.params.slug} type={'page'}>
+    <div className="Page">
+      <Head></Head>
+      <TheLoop></TheLoop>
+      <Foot></Foot>
+    </div>
+    </Provider>
+  )    
+ 
 }
 export default Page

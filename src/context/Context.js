@@ -7,6 +7,8 @@ export const Consumer = storeContext.Consumer;
 export class Provider extends React.Component {
   constructor(props) {
     super(props);
+    
+    console.log(props);
     this.state = {
       posts : []      
     };
@@ -14,7 +16,23 @@ export class Provider extends React.Component {
  
   componentDidMount(){
     let self = this;
-    Axios.get('/wp-json/wp/v2/posts').then((response)=>{
+    let url = '/wp-json/wp/v2/';
+
+    switch(self.props.type){
+      case 'post':       
+        url += 'posts/?slug=';
+        url += self.props.slug
+        break;
+      case 'page': 
+        url += 'pages/?slug=';
+        url += self.props.slug
+      break;
+      default:
+      break;
+    }
+
+
+    Axios.get(url).then((response)=>{
       self.setState({
         posts : response.data
       })

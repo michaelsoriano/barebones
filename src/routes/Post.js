@@ -7,7 +7,7 @@ import {Provider} from '../context/Context'
 const Post = (props) => { 
   
   return (
-    <Provider slug={props.match.params.slug}>
+    <Provider slug={props.match.params.slug} type={'post'}>
     <div className="Post">
       <Head></Head>
       <TheLoop></TheLoop>
