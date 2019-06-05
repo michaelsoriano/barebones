@@ -10,7 +10,7 @@ const ThePost = ({index,context}) => {
     let linkPrefix = item.type === 'page' ? '/page/' : '/post/';     
 
     return (
-        <div id={'post-id-'+item.id}>
+        <div id={'post-id-'+item.id} className={'post-item'}>
             <h1><Link to={linkPrefix+item.slug}>{item.title.rendered}</Link></h1>
         </div>);
 

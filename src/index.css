@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +10,21 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.home .post-item h1 {
+  font-size:17px;
+}
+
+.post-item h1 a {
+  color: #989898;
+  text-decoration: none;
+}
+.post-item h1 a:hover {
+  color:#b7b7b7;
+}
+
+#root {
+  max-width: 1200px;
+  margin:0 auto;
 }

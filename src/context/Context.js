@@ -1,6 +1,9 @@
 import React from "react";
 import Axios from "axios";
 
+//context api:  
+//https://medium.com/datadriveninvestor/getting-started-w-reacts-context-api-f60aa9be758f
+
 const storeContext = React.createContext();
 export const Consumer = storeContext.Consumer;
 
