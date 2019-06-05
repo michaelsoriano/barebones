@@ -1,21 +1,17 @@
 import React from 'react'; 
 import WithConsumer from '../context/WithConsumer';
+import Item from '../partials/Item';
 
 const TheLoop = ({ context }) => {
-
-    // console.log(context);
 
     const posts = () => context.posts;
     const pos = posts();
   
     return (
        pos.map(function(item,i){
-         return <div key={i}>{item}</div>
+         return <Item key={i} index={i}></Item>
        })
     );
-
-    
-
 
 };
 export default WithConsumer(TheLoop);

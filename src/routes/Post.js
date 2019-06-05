@@ -3,7 +3,8 @@ import Head from '../partials/Head';
 import TheLoop from '../partials/TheLoop';
 import Foot from '../partials/Foot';
 import {Provider} from '../context/Context'
-function Post (props) { 
+
+const Post = (props) => { 
   
   return (
     <Provider slug={props.match.params.slug}>
