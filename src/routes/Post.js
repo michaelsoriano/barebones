@@ -1,19 +1,20 @@
 import React from 'react';
 import Head from '../partials/Head';
+import TheLoop from '../partials/TheLoop';
 import Foot from '../partials/Foot';
+import {Provider} from '../context/Context'
 
-class Post extends React.Component {
+const Post = (props) => { 
   
-  render() {    
-    return (
-      <div className="Post">
-        <Head></Head>
-        this is the Post component
-        <h1>this is the slug: {this.props.match.params.slug}</h1>
-        <Foot></Foot>
-      </div>
-    )
-    
-  }
+  return (
+    <Provider slug={props.match.params.slug} type={'post'}>
+    <div className="Post">
+      <Head></Head>
+      <TheLoop></TheLoop>
+      <Foot></Foot>
+    </div>
+    </Provider>
+  )    
+ 
 }
 export default Post
