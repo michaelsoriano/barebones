@@ -10,25 +10,26 @@ export class Provider extends React.Component {
     
     console.log(props);
     this.state = {
-      posts : []      
+      posts : [], 
+      comments : []     
     };
   }
  
   componentDidMount(){
+    
     let self = this;
     let url = '/wp-json/wp/v2/';
-
-    switch(self.props.type){
-      case 'post':       
-        url += 'posts/?slug=';
-        url += self.props.slug
-        break;
+ 
+    
+    switch(self.props.type){      
       case 'page': 
         url += 'pages/?slug=';
         url += self.props.slug
       break;
-      default:
-      break;
+      case 'post': 
+      default:      
+        url += self.props.slug ? 'posts/?slug=' + self.props.slug : 'posts/';
+        break;      
     }
 
 

@@ -5,9 +5,9 @@ import Foot from '../partials/Foot';
 import {Provider} from '../context/Context'
 
 const Post = (props) => { 
-  
+  let slug = props.match.params.slug
   return (
-    <Provider slug={props.match.params.slug} type={'post'}>
+    <Provider slug={slug} type={'post'}>
     <div className="Post">
       <Head></Head>
       <TheLoop></TheLoop>

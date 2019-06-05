@@ -1,6 +1,6 @@
 import React from 'react'; 
 import WithConsumer from '../context/WithConsumer';
-import Item from '../partials/Item';
+import ThePost from './ThePost';
 
 const TheLoop = ({ context }) => {
 
@@ -9,7 +9,7 @@ const TheLoop = ({ context }) => {
   
     return (
        pos.map(function(item,i){
-         return <Item key={i} index={i}></Item>
+         return <ThePost key={i} index={i}></ThePost>
        })
     );
 
