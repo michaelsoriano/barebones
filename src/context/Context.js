@@ -10,38 +10,71 @@ export const Consumer = storeContext.Consumer;
 export class Provider extends React.Component {
   constructor(props) {
     super(props);
-    
-    console.log(props);
+     
     this.state = {
       posts : [], 
-      comments : []     
+      comments : [],
+      currentPage : 1, 
+      totalPages : 0, 
+      nextClicked : this.nextClicked.bind(this), 
+      previousClicked : this.previousClicked.bind(this)       
     };
+ 
   }
  
   componentDidMount(){
-    
-    let self = this;
-    let url = '/wp-json/wp/v2/';
- 
-    
-    switch(self.props.type){      
+    this.getPosts(this.buildUrl());      
+  }
+
+  buildUrl(){
+
+    let url = '/wp-json/wp/v2/';    
+    switch(this.props.type){      
       case 'page': 
         url += 'pages/?slug=';
-        url += self.props.slug
+        url += this.props.slug
       break;
       case 'post': 
       default:      
-        url += self.props.slug ? 'posts/?slug=' + self.props.slug : 'posts/';
+        url += this.props.slug ? 'posts/?slug=' + this.props.slug : 'posts/?page=' + this.state.currentPage;
         break;      
     }
 
+    return url;
+  }
 
+
+  getPosts (url){
+    let self = this;
     Axios.get(url).then((response)=>{
       self.setState({
-        posts : response.data
-      })
-      console.log(response);
-    }).catch();    
+        posts : response.data, 
+        totalPages : response.headers['x-wp-totalpages']
+      },function(){
+        console.log('after setstate...');
+        console.log(self.state);
+      })      
+    }).catch();  
+  }
+
+
+  nextClicked (){ 
+    let newPage = this.state.currentPage + 1;    
+    this.setState({
+      currentPage : newPage
+    },function(){
+      this.getPosts(this.buildUrl());
+    })   
+  }
+
+
+  previousClicked (){
+    let newPage = this.state.currentPage - 1;    
+    this.setState({
+      currentPage : newPage
+    },function(){
+      this.getPosts(this.buildUrl());
+    })
   }
 
 
