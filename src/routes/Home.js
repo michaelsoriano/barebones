@@ -11,8 +11,10 @@ class Home extends React.Component {
       <Provider type={'post'}>
       <div className="home">
           <Head></Head>
-          <TheLoop></TheLoop>
-          <Pager></Pager>
+          <div className="content-area">
+            <TheLoop></TheLoop>
+            <Pager></Pager>
+          </div>          
           <Foot></Foot>
       </div>
       </Provider>

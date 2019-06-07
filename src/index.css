@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #ebebeb;
 }
 
 code {
@@ -25,6 +26,25 @@ code {
 }
 
 #root {
-  max-width: 1200px;
+  margin-top: 25px !important;
+  max-width: 1000px;
+  background:#fff;
   margin:0 auto;
+  /* padding:25px 45px; */
+}
+.header, 
+.footer {
+  background:#d8d8d8;
+  padding:25px 45px;
+}
+.content-area {
+  padding:25px 45px;
+}
+
+
+@media(max-width:768px){
+  #root {
+    margin-left: 35px;
+    margin-right: 35px;
+  }
 }

@@ -7,7 +7,9 @@ class NotFound extends React.Component {
     return (
       <div className="notfound">
         <Head></Head>
+        <div className="content-area">
         <h1>Not Found</h1>
+        </div>
         <Foot></Foot>
       </div>
     )

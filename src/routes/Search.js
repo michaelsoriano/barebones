@@ -11,8 +11,9 @@ class Search extends React.Component {
     return (
       <div className="archive">
         <Head></Head>
-          this is search   
-          <h1>this is the term: {this.props.match.params.term}</h1>
+        <div className="content-area">        
+          <h1>Search term: {this.props.match.params.term}</h1>
+        </div>          
         <Foot></Foot>
       </div>
     )

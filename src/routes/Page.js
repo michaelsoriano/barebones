@@ -11,7 +11,9 @@ const Page = (props) => {
     <Provider slug={slug} type={'page'}>
     <div className="Page">
       <Head></Head>
+      <div className="content-area">
       <TheLoop></TheLoop>
+      </div>
       <Foot></Foot>
     </div>
     </Provider>

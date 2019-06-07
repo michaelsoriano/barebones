@@ -10,7 +10,9 @@ const Post = (props) => {
     <Provider slug={slug} type={'post'}>
     <div className="Post">
       <Head></Head>
+      <div className="content-area">
       <TheLoop></TheLoop>
+      </div>
       <Foot></Foot>
     </div>
     </Provider>
