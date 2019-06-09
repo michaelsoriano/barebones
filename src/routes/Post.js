@@ -6,8 +6,10 @@ import {Provider} from '../context/Context'
 
 const Post = (props) => { 
   let slug = props.match.params.slug
+  let type = props.match.path === '/page/:slug' ? 'page' : 'post';
+
   return (
-    <Provider slug={slug} type={'post'}>
+    <Provider slug={slug} type={type}>
     <div className="Post">
       <Head></Head>
       <div className="content-area">
