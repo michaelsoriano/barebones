@@ -10,8 +10,10 @@ export const Consumer = storeContext.Consumer;
 export class Provider extends React.Component {
   constructor(props) {
     super(props);
-     
+      
     this.state = {
+      type : this.props.type,
+      route : this.props.route,
       posts : [], 
       comments : [],
       currentPage : 1, 
@@ -29,7 +31,7 @@ export class Provider extends React.Component {
   buildUrl(){
 
     let url = '/wp-json/wp/v2/';    
-    switch(this.props.type){      
+    switch(this.state.type){      
       case 'page': 
         url += 'pages/?slug=';
         url += this.props.slug

@@ -6,12 +6,15 @@ const ThePost = ({index,context}) => {
  
     const posts = () => context.posts;
     const item = posts()[index];
-    
-    let linkPrefix = item.type === 'page' ? '/page/' : '/post/';     
+
+    let linkPrefix = context.type === 'page' ? '/page/' : '/post/'; 
+    let theContent = context.route === 'home' ? item.excerpt.rendered
+        : item.content.rendered;
 
     return (
         <div id={'post-id-'+item.id} className={'post-item'}>
             <h1><Link to={linkPrefix+item.slug}>{item.title.rendered}</Link></h1>
+            <div className="post-content" dangerouslySetInnerHTML={{__html:theContent}}></div>
         </div>);
 
 };

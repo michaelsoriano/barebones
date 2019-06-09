@@ -10,6 +10,7 @@ const Pager = function ({context}){
 
     useEffect(() => {
         prevBtn.current.disabled = true;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]); 
     
     function nextClicked(){

@@ -8,7 +8,7 @@ import {Provider} from '../context/Context';
 class Home extends React.Component {
   render() {
     return (
-      <Provider type={'post'}>
+      <Provider type={'post'} route={'home'}>
       <div className="home">
           <Head></Head>
           <div className="content-area">

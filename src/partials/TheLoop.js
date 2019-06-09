@@ -7,11 +7,17 @@ const TheLoop = ({ context }) => {
     const posts = () => context.posts;
     const pos = posts();
   
-    return (
-       pos.map(function(item,i){
-         return <ThePost key={i} index={i}></ThePost>
-       })
-    );
+    let results = '';
+
+    if(pos.length === 0){
+      results = <div>no results</div>;
+    }else{
+      results = pos.map(function(item,i){
+           return <ThePost key={i} index={i}></ThePost>
+         })
+    }
+
+    return (results);
 
 };
 export default WithConsumer(TheLoop);
