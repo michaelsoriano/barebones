@@ -8,8 +8,8 @@ const ThePost = ({index,context}) => {
     const item = posts()[index];
 
     let linkPrefix = context.type === 'page' ? '/page/' : '/post/'; 
-    let theContent = context.route === 'home' ? item.excerpt.rendered
-        : item.content.rendered;
+    let theContent = context.route === '/' ? item.excerpt.rendered
+        : item.content.rendered; 
 
     return (
         <div id={'post-id-'+item.id} className={'post-item'}>

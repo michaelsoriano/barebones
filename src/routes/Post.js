@@ -4,12 +4,10 @@ import TheLoop from '../partials/TheLoop';
 import Foot from '../partials/Foot';
 import {Provider} from '../context/Context'
 
-const Post = (props) => { 
-  let slug = props.match.params.slug
-  let type = props.match.path === '/page/:slug' ? 'page' : 'post';
+const Post = (props) => {  
 
   return (
-    <Provider slug={slug} type={type}>
+    <Provider match={props.match} >
     <div className="Post">
       <Head></Head>
       <div className="content-area">

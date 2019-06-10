@@ -9,11 +9,26 @@ export const Consumer = storeContext.Consumer;
 
 export class Provider extends React.Component {
   constructor(props) {
-    super(props);
-      
+    super(props); 
+
+    let type = 'post';     
+    switch(props.match.path){
+      case '/page/:slug':
+        type = 'page';
+        break;
+      case '/post/:slug':
+      default:
+        type = 'post';
+        break;
+    }
+
+    let slug = props.match.params.slug; 
+    let route = props.match.path;
+
     this.state = {
-      type : this.props.type,
-      route : this.props.route,
+      slug : slug,
+      type : type,
+      route : route,
       posts : [], 
       comments : [],
       currentPage : 1, 
@@ -34,11 +49,11 @@ export class Provider extends React.Component {
     switch(this.state.type){      
       case 'page': 
         url += 'pages/?slug=';
-        url += this.props.slug
+        url += this.state.slug
       break;
       case 'post': 
       default:      
-        url += this.props.slug ? 'posts/?slug=' + this.props.slug : 'posts/?page=' + this.state.currentPage;
+        url += this.state.slug ? 'posts/?slug=' + this.state.slug : 'posts/?page=' + this.state.currentPage;
         break;      
     }
 
