@@ -5,11 +5,11 @@ import Pager from '../partials/Pager';
 import Foot from '../partials/Foot';
 import {Provider} from '../context/Context';
 
-const Home = (props) => {  
+const Archive = (props) => {  
 
   return (
     <Provider match={props.match} >
-    <div className="home">
+    <div className="home archive">
       <Head></Head>
       <div className="content-area">
       <TheLoop></TheLoop>
@@ -21,4 +21,4 @@ const Home = (props) => {
   )    
  
 }
-export default Home
+export default Archive

@@ -8,8 +8,18 @@ const ThePost = ({index,context}) => {
     const item = posts()[index];
 
     let linkPrefix = context.type === 'page' ? '/page/' : '/post/'; 
-    let theContent = context.route === '/' ? item.excerpt.rendered
-        : item.content.rendered; 
+    
+    let theContent = ''; 
+    
+    switch(context.route){
+        case '/': //if homepage,
+        case '/search/:term': //or if search
+            theContent = item.excerpt.rendered; //show excerpt only
+        break;
+        default: //for single, pages - show entire content
+            theContent = item.content.rendered;
+        break;
+    }   
 
     return (
         <div id={'post-id-'+item.id} className={'post-item'}>

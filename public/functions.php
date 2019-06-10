@@ -7,3 +7,6 @@ function change_base_permalinks() {
     $wp_rewrite->page_structure = 'page/%pagename%/';    
     $wp_rewrite->flush_rules();    
 } 
+
+//will need to create a custom route:
+//https://benrobertson.io/wordpress/wordpress-custom-search-endpoint
