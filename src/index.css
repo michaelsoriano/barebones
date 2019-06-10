@@ -37,8 +37,12 @@ code {
   background:#d8d8d8;
   padding:25px 45px;
 }
-.content-area {
+.content-area{
   padding:25px 45px;
+}
+.comments-list {
+  padding-left: 45px;
+  padding-right: 45px;
 }
 
 

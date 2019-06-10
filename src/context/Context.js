@@ -60,6 +60,17 @@ export class Provider extends React.Component {
     return url;
   }
 
+  getComments(id){
+    let url = '/wp-json/wp/v2/comments?post=' + id;
+    let self = this;
+    Axios.get(url).then((response)=>{       
+      self.setState({
+        comments : response.data 
+      })      
+    }).catch(function(error){
+      console.log(error);
+    }); 
+  }
 
   getPosts (url){
     let self = this;
@@ -67,11 +78,16 @@ export class Provider extends React.Component {
       self.setState({
         posts : response.data, 
         totalPages : response.headers['x-wp-totalpages']
-      },function(){
-        console.log('after setstate...');
-        console.log(self.state);
+      },function(){ 
+        //get comments if post, and post array is not empty
+        if(self.state.route === '/post/:slug' 
+          && self.state.posts[0]){           
+          self.getComments(self.state.posts[0].id);
+        }  
       })      
-    }).catch();  
+    }).catch(function(error){
+      console.log(error);
+    });  
   }
 
 
