@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import './index.css';
-import Archive from './routes/Archive';
-import Single from './routes/Single';
-// import Search from './routes/Search';
-import Notfound from './routes/Notfound';
+import Archive from './templates/Archive';
+import Single from './templates/Single';
+import Notfound from './templates/Notfound';
 
 const routes = (   
       <Router>

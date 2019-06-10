@@ -8,9 +8,11 @@ import CommentsList from '../partials/CommentList';
 const Single = (props) => {  
 
   let comments = ''; 
+  let commentsForm = '';
 
   if(props.match.path === '/post/:slug'){
-    comments = <CommentsList></CommentsList>
+    comments = <CommentsList></CommentsList>; 
+    commentsForm = 'Form here..';
   }
 
   return (
@@ -21,6 +23,7 @@ const Single = (props) => {
       <TheLoop></TheLoop>
       </div>
       {comments}
+      {commentsForm}
       <Foot></Foot>
     </div>
     </Provider>
