@@ -16,7 +16,7 @@ const Single = (props) => {
   }
 
   return (
-    <Provider match={props.match} >
+    <Provider router={props} >
     <div className="Post">
       <Head></Head>
       <div className="content-area">

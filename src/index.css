@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-.home .post-item h1 {
+.archive .post-item h1 {
   font-size:17px;
 }
 
@@ -44,7 +44,12 @@ code {
   padding-left: 45px;
   padding-right: 45px;
 }
-
+.Pager {
+  margin-top:25px;
+}
+.PagerText{
+  margin-top:10px;
+}
 
 @media(max-width:768px){
   #root {

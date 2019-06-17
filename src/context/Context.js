@@ -12,7 +12,7 @@ export class Provider extends React.Component {
     super(props); 
 
     let type = 'post';     
-    switch(props.match.path){
+    switch(props.router.match.path){
       case '/page/:slug':
         type = 'page';
         break;
@@ -25,9 +25,9 @@ export class Provider extends React.Component {
         break;
     }
 
-    let slug = props.match.params.slug; 
-    let route = props.match.path;
-    let term = props.match.params.term;
+    let slug = props.router.match.params.slug; 
+    let route = props.router.match.path;
+    let term = props.router.match.params.term;
 
     this.state = {
       term : term,
@@ -39,13 +39,27 @@ export class Provider extends React.Component {
       currentPage : 1, 
       totalPages : 0, 
       nextClicked : this.nextClicked.bind(this), 
-      previousClicked : this.previousClicked.bind(this)       
+      previousClicked : this.previousClicked.bind(this), 
+      submitSearch : this.submitSearch.bind(this)       
     };
  
   }
  
   componentDidMount(){
     this.getPosts(this.buildUrl());      
+  }
+
+  submitSearch(term){     
+
+    this.setState({
+      term : term, 
+      posts : [], 
+      totalPages : 0
+    },function(){     
+      this.props.router.history.push('/search/'+term);
+      console.log(this.state)
+    });
+    // 
   }
 
   buildUrl(){
