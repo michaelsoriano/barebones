@@ -16,6 +16,9 @@ export class Provider extends React.Component {
       case '/page/:slug':
         type = 'page';
         break;
+      case '/search/:term':
+        type = 'search';
+        break;
       case '/post/:slug':
       default:
         type = 'post';
@@ -24,8 +27,10 @@ export class Provider extends React.Component {
 
     let slug = props.match.params.slug; 
     let route = props.match.path;
+    let term = props.match.params.term;
 
     this.state = {
+      term : term,
       slug : slug,
       type : type,
       route : route,
@@ -51,6 +56,11 @@ export class Provider extends React.Component {
         url += 'pages/?slug=';
         url += this.state.slug
       break;
+      case 'search': 
+        url += 'search/?s=';
+        url += this.state.term;
+        url += '&page=' + this.state.currentPage;
+      break;      
       case 'post': 
       default:      
         url += this.state.slug ? 'posts/?slug=' + this.state.slug : 'posts/?page=' + this.state.currentPage;

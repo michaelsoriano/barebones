@@ -29,25 +29,46 @@ function barebones_ajax_search( $request ) {
  
     if( isset($request['s'])) :
         // get posts 
-        $posts = get_posts([
-            'posts_per_page' => 10,
-            'post_type' => ['page', 'post'],
-            's' => $request['s'],
-        ]);
-		// set up the data I want to return
-        foreach($posts as $post):
+
+        $args = [
+            'post_type' => array( 'post', 'page'), 
+            's' => $request['s'], 
+            'posts_per_page' => 10, 
+            'paged' => $request['page']
+        ];
+        $query = new WP_Query( $args );
+        $posts = $query->posts;
+
+        $total = $query->found_posts;
+        $totalPages = $query->max_num_pages;
+
+        foreach($posts as $post): 
             $results[] = [
-                'title' => $post->post_title,
-                'link' => get_permalink( $post->ID )
+                'slug' => $post->post_name,
+                'type' => $post->post_type,
+                'title' => array(
+                    'rendered' => $post->post_title
+                ),
+                'content' => array(
+                    'rendered' => $post->post_content
+                ),
+                'excerpt' => array(
+                    'rendered' => $post->post_excerpt
+                ),
             ];
-        endforeach;
+        endforeach; 
+
     endif;
 
     if( empty($results) ) :
         return new WP_Error( 'front_end_ajax_search', 'No results');
     endif;
 
-    return rest_ensure_response( $results );
+    $response = new WP_REST_Response( $results );
+    $response->header( 'X-WP-Total', $total);
+    $response->header( 'X-WP-TotalPages', $totalPages );
+
+    return $response;     
 }
 
 function barebones_get_search_args() {
