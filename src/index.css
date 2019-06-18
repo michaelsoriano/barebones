@@ -7,7 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #ebebeb;
 }
-
+.hidden, 
+.Hidden {
+  display:none;
+  visibility: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

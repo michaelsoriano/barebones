@@ -37,9 +37,17 @@ const Pager = function ({context}){
 
     }
 
+    function pagerClass(){
+        let cls = 'Pager'; 
+        if(parseInt(totalPages()) <=1){
+            cls = 'Pager hidden';
+        }
+        return cls;
+    }
+
 
     return (
-        <div className="Pager">
+        <div className={pagerClass()}>
         <button ref={prevBtn} onClick={previousClicked}>Previous</button>
         <button ref={nextBtn} onClick={nextClicked}>Next</button>
         <div className="PagerText">Page 
