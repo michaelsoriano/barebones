@@ -25,9 +25,9 @@ export class Provider extends React.Component {
         break;
     }
 
-    let slug = props.router.match.params.slug; 
+    let slug = props.router.match.params.slug ? props.router.match.params.slug : ''; 
     let route = props.router.match.path;
-    let term = props.router.match.params.term;
+    let term = props.router.match.params.term ? props.router.match.params.term : '';
 
     this.state = {
       term : term,
@@ -40,26 +40,35 @@ export class Provider extends React.Component {
       totalPages : 0, 
       nextClicked : this.nextClicked.bind(this), 
       previousClicked : this.previousClicked.bind(this), 
-      submitSearch : this.submitSearch.bind(this)       
+      submitSearch : this.submitSearch.bind(this), 
+      updateTerm : this.updateTerm.bind(this)       
     };
  
   }
  
-  componentDidMount(){
+  componentDidMount(){   
     this.getPosts(this.buildUrl());      
   }
 
-  submitSearch(term){     
+  componentDidUpdate(prevProps){ 
+    if(prevProps.router.location.pathname !== this.props.router.location.pathname){       
+      this.getPosts(this.buildUrl()); 
+    } 
+  }
 
+  updateTerm (term){
     this.setState({
-      term : term, 
-      posts : [], 
-      totalPages : 0
-    },function(){     
-      this.props.router.history.push('/search/'+term);
-      console.log(this.state)
+      term : term
+    })
+  }
+
+  submitSearch(){      
+    this.setState({
+      type : 'search',  
+      currentPage : 1
     });
-    // 
+
+    this.props.router.history.push('/search/'+this.state.term);
   }
 
   buildUrl(){
@@ -102,7 +111,7 @@ export class Provider extends React.Component {
       self.setState({
         posts : response.data, 
         totalPages : response.headers['x-wp-totalpages']
-      },function(){ 
+      },function(){          
         //get comments if post, and post array is not empty
         if(self.state.route === '/post/:slug' 
           && self.state.posts[0]){           

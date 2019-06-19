@@ -54,6 +54,9 @@ code {
 .PagerText{
   margin-top:10px;
 }
+.searchForm {
+  float:right;
+}
 
 @media(max-width:768px){
   #root {
