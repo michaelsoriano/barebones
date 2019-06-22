@@ -3,7 +3,8 @@ import Head from '../partials/Head';
 import TheLoop from '../partials/TheLoop';
 import Foot from '../partials/Foot';
 import {Provider} from '../context/Context'
-import CommentsList from '../partials/CommentList';
+import CommentList from '../partials/CommentList';
+import CommentForm from '../partials/CommentForm';
 
 const Single = (props) => {  
 
@@ -11,8 +12,8 @@ const Single = (props) => {
   let commentsForm = '';
 
   if(props.match.path === '/post/:slug'){
-    comments = <CommentsList></CommentsList>; 
-    commentsForm = 'Form here..';
+    comments = <CommentList></CommentList>; 
+    commentsForm = <CommentForm></CommentForm>;
   }
 
   return (
