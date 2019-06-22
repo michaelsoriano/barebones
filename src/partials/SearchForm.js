@@ -4,21 +4,19 @@ import WithConsumer from '../context/WithConsumer';
 const SearchForm = ({ context }) => {
 
     const ct = () => context.term;
-    const term = ct();
-
-    let searchInput =  React.createRef(); 
+    const term = ct(); 
 
     function submitSearch (e){
         e.preventDefault();    
         context.submitSearch();
     }
 
-    function updateTerm (){
-        context.updateTerm(searchInput.current.value);
+    function updateTerm (event){       
+        context.updateTerm(event.target.value);
     }
 
     return (<form className="searchForm">        
-                <input onChange={updateTerm} ref={searchInput} value={term}></input>
+                <input onChange={updateTerm} value={term}></input>
                 <button onClick={submitSearch}>Submit</button>
             </form>);
 
