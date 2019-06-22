@@ -37,11 +37,20 @@ export class Provider extends React.Component {
       posts : [], 
       comments : [],
       currentPage : 1, 
-      totalPages : 0, 
+      totalPages : 0,      
+      commentFields : { 
+        fullName : '', 
+        email : '', 
+        website : '', 
+        comment : ''
+      },
+      //global methods
       nextClicked : this.nextClicked.bind(this), 
       previousClicked : this.previousClicked.bind(this), 
       submitSearch : this.submitSearch.bind(this), 
-      updateTerm : this.updateTerm.bind(this)       
+      updateTerm : this.updateTerm.bind(this), 
+      submitComment : this.submitComment.bind(this), 
+      updateCommentFields : this.updateCommentFields.bind(this)
     };
  
   }
@@ -69,6 +78,18 @@ export class Provider extends React.Component {
     });
 
     this.props.router.history.push('/search/'+this.state.term);
+  }
+
+  updateCommentFields (key,val){
+    //TO UPDATE NESTED STATE:
+    //https://stackoverflow.com/questions/43040721/how-to-update-nested-state-properties-in-react
+    var commentFields = {...this.state.commentFields}
+    commentFields[key] = val;
+    this.setState({commentFields})   
+  }
+
+  submitComment(){
+    console.log(this.state.commentFields);
   }
 
   buildUrl(){
