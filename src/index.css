@@ -57,6 +57,31 @@ code {
 .searchForm {
   float:right;
 }
+.comment-form {
+  padding: 20px 48px 58px;
+}
+
+.comment-form label, 
+.comment-form input, 
+.comment-form textarea {
+  display:block;
+}
+.comment-form label {
+  font-size:12px;
+  margin-bottom:5px;
+}
+
+.comment-form input, 
+.comment-form textarea {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.comment-form textarea {
+  width: 168px;
+  margin-bottom: 20px;
+}
 
 @media(max-width:768px){
   #root {
