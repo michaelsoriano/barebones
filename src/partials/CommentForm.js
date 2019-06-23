@@ -68,7 +68,7 @@ function CommentForm({context}){
     function Errors (){   
         let errors = context.commentErrors;        
         return (     
-            <ul>
+            <ul className="error-list">
                 {errors.map(function(item,i){
                     return <li key={i}>{item}</li>
                 })}

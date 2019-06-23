@@ -76,8 +76,6 @@ export class Provider extends React.Component {
   updateCommentErrors (errors){
     this.setState({
       commentErrors : errors
-    },function(){
-      console.log(this.state.commentErrors)
     })
   }
 
@@ -99,7 +97,34 @@ export class Provider extends React.Component {
   }
 
   submitComment(){
-    console.log(this.state.commentFields);
+    // console.log(this.state);
+    let postdata = {
+      'post' : this.state.posts[0].id,
+      'author_name' : this.state.commentFields.fullName, 
+      'author_email' : this.state.commentFields.email,
+      'author_url' : this.state.commentFields.website, 
+      'content' : this.state.commentFields.comment
+    }
+
+    let self = this;
+
+    Axios.post('/wp-json/wp/v2/comments',postdata).then((response)=>{     
+
+      let cmnt = response.data; 
+      cmnt.waiting = 'Your comment is waiting approval';
+      let cmnts = self.state.comments;
+      cmnts.push(cmnt);
+      self.setState({
+        comments : cmnts 
+      })      
+    }).catch(function(error){  
+      let err = [];
+      err.push(error.message);
+      self.setState({
+        commentErrors : err
+      })
+    }); 
+
   }
 
   buildUrl(){

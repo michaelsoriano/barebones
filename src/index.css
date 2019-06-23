@@ -83,6 +83,19 @@ code {
   margin-bottom: 20px;
 }
 
+.error-list {
+  margin: 0 0 30px 0;
+  padding: 0 0 0 20px;
+  color: #f70000;
+  font-size: 12px;
+}
+
+.comment-waiting {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #49ad00;
+}
+
 @media(max-width:768px){
   #root {
     margin-left: 35px;

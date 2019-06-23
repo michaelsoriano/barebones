@@ -81,3 +81,8 @@ function barebones_get_search_args() {
 
    return $args;
 }
+
+function barebones_allow_anonymous_comments() {
+    return true;
+}
+add_filter('rest_allow_anonymous_comments','barebones_allow_anonymous_comments');
