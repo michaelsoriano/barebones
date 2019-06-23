@@ -44,13 +44,15 @@ export class Provider extends React.Component {
         website : '', 
         comment : ''
       },
+      commentErrors : [],
       //global methods
       nextClicked : this.nextClicked.bind(this), 
       previousClicked : this.previousClicked.bind(this), 
       submitSearch : this.submitSearch.bind(this), 
       updateTerm : this.updateTerm.bind(this), 
       submitComment : this.submitComment.bind(this), 
-      updateCommentFields : this.updateCommentFields.bind(this)
+      updateCommentFields : this.updateCommentFields.bind(this),
+      updateCommentErrors : this.updateCommentErrors.bind(this)
     };
  
   }
@@ -68,6 +70,14 @@ export class Provider extends React.Component {
   updateTerm (term){
     this.setState({
       term : term
+    })
+  }
+
+  updateCommentErrors (errors){
+    this.setState({
+      commentErrors : errors
+    },function(){
+      console.log(this.state.commentErrors)
     })
   }
 
