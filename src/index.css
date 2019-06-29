@@ -22,7 +22,7 @@ code {
 }
 
 .post-item h1 a {
-  color: #989898;
+  color: #000;
   text-decoration: none;
 }
 .post-item h1 a:hover {
@@ -42,7 +42,7 @@ code {
   padding:25px 45px;
 }
 .content-area{
-  padding:25px 45px;
+  padding:25px 45px 60px;
 }
 .comments-list {
   padding-left: 45px;
@@ -94,6 +94,13 @@ code {
   font-size: 12px;
   margin-bottom: 10px;
   color: #49ad00;
+}
+
+.post-meta {
+  font-family:'georgia';
+  font-size:12px;
+  font-style:italic;
+  color:#a9a9a9;
 }
 
 @media(max-width:768px){

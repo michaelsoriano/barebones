@@ -8,7 +8,7 @@ const PostMeta = ({index,context}) => {
     const item = posts()[index];
      
     let theMeta = ''; 
-    if(item.type == 'post'){
+    if(item.type === 'post'){
         theMeta = (<div className="post-meta">
         Published:  <Moment format="MM/DD/YYYY">{item.date}</Moment>, 
         Written by {item.author_name}, Under {item.category_name}

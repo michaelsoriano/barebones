@@ -12,9 +12,11 @@ const routes = (
             <Route exact path="/" component={Archive} />          
             <Route path="/page/:slug" component={Single} />    
             <Route path="/post/:slug" component={Single} /> 
-            <Redirect exact from='/post/' to='/' />            
-            <Route path="/search/:term" component={Archive} />
-            <Route component={Notfound} />                         
+            <Route path="/search/:term" component={Archive} />                               
+            <Redirect exact from='/post/' to='/' /> 
+            <Redirect exact from='/page/' to='/' />
+            <Redirect exact from='/search/' to='/' />        
+            <Route component={Notfound} /> 
         </Switch>
       </Router> 
   )

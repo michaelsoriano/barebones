@@ -42,8 +42,13 @@ function barebones_ajax_search( $request ) {
         $total = $query->found_posts;
         $totalPages = $query->max_num_pages;
 
-        foreach($posts as $post): 
+        foreach($posts as $post):  
+            $categories = get_the_category($post->ID);
+            $category = !empty($categories[0]) ? $categories[0]->name : '';
             $results[] = [
+                'id' => $post->ID,
+                'author_name' => get_the_author_meta('display_name', $post->post_author),
+                'category_name' =>  $category,
                 'slug' => $post->post_name,
                 'type' => $post->post_type,
                 'title' => array(
