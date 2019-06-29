@@ -13,7 +13,7 @@ function CommentsList({context}){
             {commentsList.map(function(item,i){
                 return (
                 <div className="comment" key={i}>
-                    <div class="comment-waiting">{item.waiting}</div>
+                    <div className="comment-waiting">{item.waiting}</div>
                     {item.author_name} says:              
                     <div dangerouslySetInnerHTML={{__html:item.content.rendered}}></div>
                 </div>
