@@ -86,3 +86,19 @@ function barebones_allow_anonymous_comments() {
     return true;
 }
 add_filter('rest_allow_anonymous_comments','barebones_allow_anonymous_comments');
+
+function barebones_add_to_post_api (){
+    register_rest_field( 'post', 'author_name', array(
+        'get_callback' => function( $post ) {
+            return get_the_author_meta('display_name', $post['author']);
+        }
+    ));
+    register_rest_field( 'post', 'category_name', array(
+        'get_callback' => function( $post ) {
+            $categories = get_the_category($post['id']);
+            return $categories[0]->name; 
+        }
+    ));
+}
+add_action( 'rest_api_init', 'barebones_add_to_post_api');
+   

@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 import WithConsumer from '../context/WithConsumer';
 
 const PostMeta = ({index,context}) => {
@@ -10,7 +11,7 @@ const PostMeta = ({index,context}) => {
 
     return (
         <div className="post-meta">
-            Published: {item.date}
+            Published:  <Moment format="MM/DD/YYYY">{item.date}</Moment>, 
         </div>);
 
 };
