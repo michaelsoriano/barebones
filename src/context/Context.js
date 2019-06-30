@@ -11,17 +11,20 @@ export class Provider extends React.Component {
   constructor(props) {
     super(props); 
 
-    let type = 'post';     
+    let restType = 'post';     
     switch(props.router.match.path){
       case '/page/:slug':
-        type = 'page';
+        restType = 'page';
         break;
       case '/search/:term':
-        type = 'search';
+        restType = 'search';
+        break;
+      case '/category/:slug':
+        restType = 'category';
         break;
       case '/post/:slug':
       default:
-        type = 'post';
+        restType = 'post';
         break;
     }
 
@@ -32,7 +35,7 @@ export class Provider extends React.Component {
     this.state = {
       term : term,
       slug : slug,
-      type : type,
+      restType : restType,
       route : route,
       posts : [], 
       comments : [],
@@ -81,7 +84,7 @@ export class Provider extends React.Component {
 
   submitSearch(){      
     this.setState({
-      type : 'search',  
+      restType : 'search',  
       currentPage : 1
     });
 
@@ -128,14 +131,19 @@ export class Provider extends React.Component {
   }
 
   buildUrl(){
-
     let url = '/wp-json/wp/v2/';    
-    switch(this.state.type){      
+    switch(this.state.restType){      
       case 'page': 
         url += 'pages/?slug=';
         url += this.state.slug
       break;
       case 'search': 
+        url += 'search/?s=';
+        url += this.state.term;
+        url += '&page=' + this.state.currentPage;
+      break;
+      case 'category': 
+        console.log(this.state.slug)
         url += 'search/?s=';
         url += this.state.term;
         url += '&page=' + this.state.currentPage;
@@ -162,6 +170,7 @@ export class Provider extends React.Component {
   }
 
   getPosts (url){
+    console.log(url)
     let self = this;
     Axios.get(url).then((response)=>{
       self.setState({

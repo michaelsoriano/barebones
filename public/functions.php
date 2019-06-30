@@ -65,9 +65,9 @@ function barebones_ajax_search( $request ) {
 
     endif;
 
-    if( empty($results) ) :
-        return new WP_Error( 'front_end_ajax_search', 'No results');
-    endif;
+    // if( empty($results) ) :
+    //     return new WP_Error( 'front_end_ajax_search', 'No results');
+    // endif;
 
     $response = new WP_REST_Response( $results );
     $response->header( 'X-WP-Total', $total);

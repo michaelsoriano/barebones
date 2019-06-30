@@ -12,6 +12,7 @@ const routes = (
             <Route exact path="/" component={Archive} />          
             <Route path="/page/:slug" component={Single} />    
             <Route path="/post/:slug" component={Single} /> 
+            <Route path="/category/:slug" component={Archive} /> 
             <Route path="/search/:term" component={Archive} />                               
             <Redirect exact from='/post/' to='/' /> 
             <Redirect exact from='/page/' to='/' />
