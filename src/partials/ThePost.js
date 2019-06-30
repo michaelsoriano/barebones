@@ -15,6 +15,7 @@ const ThePost = ({index,context}) => {
     switch(context.route){
         case '/': //if homepage,
         case '/search/:term': //or if search
+        case '/category/:catid': //or if search
             theContent = item.excerpt.rendered; //show excerpt only
         break;
         default: //for single, pages - show entire content

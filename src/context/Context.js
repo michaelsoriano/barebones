@@ -10,32 +10,18 @@ export const Consumer = storeContext.Consumer;
 export class Provider extends React.Component {
   constructor(props) {
     super(props); 
-
-    let restType = 'post';     
-    switch(props.router.match.path){
-      case '/page/:slug':
-        restType = 'page';
-        break;
-      case '/search/:term':
-        restType = 'search';
-        break;
-      case '/category/:slug':
-        restType = 'category';
-        break;
-      case '/post/:slug':
-      default:
-        restType = 'post';
-        break;
-    }
-
-    let slug = props.router.match.params.slug ? props.router.match.params.slug : ''; 
+ 
+    let restType = this.getRestType(props.router.match.path);
     let route = props.router.match.path;
+    let slug = props.router.match.params.slug ? props.router.match.params.slug : '';
     let term = props.router.match.params.term ? props.router.match.params.term : '';
+    let catid = props.router.match.params.catid ? props.router.match.params.catid : ''; 
 
     this.state = {
       term : term,
       slug : slug,
       restType : restType,
+      catid : catid,
       route : route,
       posts : [], 
       comments : [],
@@ -59,14 +45,40 @@ export class Provider extends React.Component {
     };
  
   }
+
+  getRestType (path){
+    let restType = 'post';     
+    switch(path){
+      case '/page/:slug':
+        restType = 'page';
+        break;
+      case '/search/:term':
+        restType = 'search';
+        break;
+      case '/category/:catid':
+        restType = 'category';
+        break;
+      case '/post/:slug':
+      default:
+        restType = 'post';
+        break;
+    }
+    return restType;
+  }
  
   componentDidMount(){   
     this.getPosts(this.buildUrl());      
   }
 
   componentDidUpdate(prevProps){ 
-    if(prevProps.router.location.pathname !== this.props.router.location.pathname){       
-      this.getPosts(this.buildUrl()); 
+    if(prevProps.router.location.pathname !== this.props.router.location.pathname){        
+      this.setState({
+        currentPage : 1, 
+        restType : this.getRestType(this.props.router.match.path)
+      },function(){
+        this.getPosts(this.buildUrl()); 
+      })
+      
     } 
   }
 
@@ -143,9 +155,8 @@ export class Provider extends React.Component {
         url += '&page=' + this.state.currentPage;
       break;
       case 'category': 
-        console.log(this.state.slug)
-        url += 'search/?s=';
-        url += this.state.term;
+        url += 'posts?categories=';
+        url += this.state.catid;
         url += '&page=' + this.state.currentPage;
       break;      
       case 'post': 
@@ -178,6 +189,8 @@ export class Provider extends React.Component {
         totalPages : response.headers['x-wp-totalpages']
       },function(){          
         //get comments if post, and post array is not empty
+        console.log('inside getposts after');
+        console.log(self.state);
         if(self.state.route === '/post/:slug' 
           && self.state.posts[0]){           
           self.getComments(self.state.posts[0].id);
