@@ -33,6 +33,7 @@ export class Provider extends React.Component {
         website : '', 
         comment : ''
       },
+      appError : '',
       commentErrors : [],
       //global methods
       nextClicked : this.nextClicked.bind(this), 
@@ -181,16 +182,13 @@ export class Provider extends React.Component {
   }
 
   getPosts (url){
-    console.log(url)
     let self = this;
     Axios.get(url).then((response)=>{
       self.setState({
         posts : response.data, 
         totalPages : response.headers['x-wp-totalpages']
       },function(){          
-        //get comments if post, and post array is not empty
-        console.log('inside getposts after');
-        console.log(self.state);
+        //get comments if post, and post array is not empty       
         if(self.state.route === '/post/:slug' 
           && self.state.posts[0]){           
           self.getComments(self.state.posts[0].id);
@@ -198,6 +196,7 @@ export class Provider extends React.Component {
       })      
     }).catch(function(error){
       console.log(error);
+      self.appError = 'An unexpected error occurred';
     });  
   }
 

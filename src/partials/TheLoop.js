@@ -8,13 +8,17 @@ const TheLoop = ({ context }) => {
     const pos = posts();
   
     let results = '';
-
-    if(pos.length === 0){
-      results = <div>no results</div>;
+     
+    if(context.appError){
+      results = <div className="app-error">{context.appError}</div>;      
     }else{
-      results = pos.map(function(item,i){
-           return <ThePost key={i} index={i}></ThePost>
-         })
+      if(pos.length === 0){
+        results = <div className="no-results">no results</div>;
+      }else{
+        results = pos.map(function(item,i){
+             return <ThePost key={i} index={i}></ThePost>
+           })
+      }
     }
 
     return (results);

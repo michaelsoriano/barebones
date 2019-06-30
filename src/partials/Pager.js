@@ -37,9 +37,10 @@ const Pager = function ({context}){
 
     }
 
-    function pagerClass(){
+    function pagerClass(){ 
         let cls = 'Pager'; 
-        if(parseInt(totalPages()) <=1){
+        if(parseInt(totalPages()) <=1 || 
+            context.appError){
             cls = 'Pager hidden';
         }
         return cls;
