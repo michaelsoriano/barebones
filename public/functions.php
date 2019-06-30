@@ -43,12 +43,10 @@ function barebones_ajax_search( $request ) {
         $totalPages = $query->max_num_pages;
 
         foreach($posts as $post):  
-            $categories = get_the_category($post->ID);
-            $category = !empty($categories[0]) ? $categories[0]->name : '';
-            $results[] = [
+           
+            $item = [
                 'id' => $post->ID,
-                'author_name' => get_the_author_meta('display_name', $post->post_author),
-                'category_name' =>  $category,
+                'author_name' => get_the_author_meta('display_name', $post->post_author),                
                 'slug' => $post->post_name,
                 'type' => $post->post_type,
                 'title' => array(
@@ -61,6 +59,17 @@ function barebones_ajax_search( $request ) {
                     'rendered' => $post->post_excerpt
                 ),
             ];
+
+            $categories = get_the_category($post->ID);
+                     
+            if(!empty($categories[0])){  
+                $catArr = array();
+                $catArr[] = $categories[0]->term_id;
+                $item['category_name'] = $categories[0]->name; 
+                $item['categories'] = $catArr;              
+            }           
+
+            $results[] = $item;
         endforeach; 
 
     endif;

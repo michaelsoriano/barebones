@@ -72,10 +72,12 @@ export class Provider extends React.Component {
   }
 
   componentDidUpdate(prevProps){ 
-    if(prevProps.router.location.pathname !== this.props.router.location.pathname){        
+    if(prevProps.router.location.pathname !== this.props.router.location.pathname){  
+      let curProps = this.props.router.match;       
       this.setState({
         currentPage : 1, 
-        restType : this.getRestType(this.props.router.match.path)
+        restType : this.getRestType(curProps.path), 
+        catid : curProps.params.catid ? curProps.params.catid : ''
       },function(){
         this.getPosts(this.buildUrl()); 
       })
