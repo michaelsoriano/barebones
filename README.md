@@ -1,4 +1,15 @@
-Barebones is a starter theme for WordPress running ReactJS. It is designed to get you up to speed in writing JS single page applications and WordPress' REST api. A complete tutorial on how this theme is built can be found [here](http://michaelsoriano.com/wordpress-theme-react-part-1-setup/).  
+Barebones is a starter theme for WordPress running ReactJS. It is designed to get you up to speed in writing JS single page applications and WordPress' REST api. A complete tutorial on how this theme is built can be found [here](http://michaelsoriano.com/wordpress-theme-react-part-1-setup/). 
+
+By core WordPress functionality I mean the following:
+
+* Single Post
+* Post Meta
+* Comments
+* Comment form
+* Archive (with paging)
+* Category 
+* Search results (with paging)
+* Search form
 
 This repo contains the "react-src" portion of the theme only. When you clone, you have to take extra steps for it to work. Continue below:
 
