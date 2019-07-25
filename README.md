@@ -17,7 +17,7 @@ This repo contains the "react-src" portion of the theme only. When you clone, yo
 
 In your WP themes directory, create a directory named "my-theme" - or any name you like. CD into this directory, and do:
 
-`git clone https://thisrepo.git react-src`
+`git clone https://github.com/michaelsoriano/barebones.git react-src`
 
 This will create a folder inside your my-theme directory called "react-src" with the necessary files. CD into "react-src" and do:
 
